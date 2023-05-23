@@ -1,6 +1,6 @@
 <template>
   <div v-show="!app.siderCollapse" class="mask-layer" @click="app.toggleSiderCollapse"></div>
-  <div :class="siderContainerClass" :style="{ width: siderContainerWidth, transition: 'width 0.3s' }">
+  <div class="sider-container" :style="{ width: siderContainerWidth, transition: 'width 0.3s' }">
     <vertical-mix-sider v-if="isVerticalMix" class="global-sider" />
     <vertical-sider v-else class="global-sider" />
   </div>
@@ -19,9 +19,6 @@ const app = useAppStore();
 const { siderWidth } = useBasicLayout();
 
 const isVerticalMix = computed(() => theme.layout.mode === 'vertical-mix');
-const siderContainerClass = computed(() => {
-  return app.siderCollapse ? 'sider-container-show' : 'sider-container-hide';
-});
 
 const siderContainerWidth = computed(() => {
   let width = 'var(--soy-sider-collapsed-width)';
@@ -53,12 +50,7 @@ const siderContainerWidth = computed(() => {
     background: rgba($color: #000000, $alpha: 0.2);
     z-index: -1;
   }
-  .sider-container-hide {
-    transition: width 0.3s;
-    width: 0px;
-    height: 100vh;
-  }
-  .sider-container-show {
+  .sider-container {
     height: 100vh;
   }
 }
