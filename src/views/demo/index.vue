@@ -1,8 +1,5 @@
 <template>
-  <div class="deom">
-    <div class="div1"></div>
-    <div class="div2"></div>
-    <div class="div3"></div>
+  <div class="demo">
     <b-table :data="tableData">
       <b-column title="名字" field="name"></b-column>
       <b-column title="任务" field="role"></b-column>
@@ -22,6 +19,4 @@ const tableData = [
 ];
 </script>
 
-<style lang="sass" module>
-.div1
-</style>
+<style lang="sass" module></style>
