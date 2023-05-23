@@ -77,7 +77,8 @@ const locale: LocaleMessages<I18nType.Schema> = {
         route: 'Route',
         user: 'User'
       },
-      about: 'About'
+      about: 'About',
+      demo: 'Demo'
     }
   }
 };

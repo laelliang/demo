@@ -508,6 +508,18 @@ export const routeModel: Record<Auth.RoleType, AuthRoute.Route[]> = {
         icon: 'fluent:book-information-24-regular',
         order: 10
       }
+    },
+    {
+      name: 'demo',
+      path: '/demo',
+      component: 'self',
+      meta: {
+        title: 'demo',
+        requiresAuth: true,
+        singleLayout: 'basic',
+        icon: 'fluent:Home48Regular',
+        order: 10
+      }
     }
   ],
   admin: [
@@ -1009,6 +1021,18 @@ export const routeModel: Record<Auth.RoleType, AuthRoute.Route[]> = {
         icon: 'fluent:book-information-24-regular',
         order: 10
       }
+    },
+    {
+      name: 'demo',
+      path: '/demo',
+      component: 'self',
+      meta: {
+        title: 'demo',
+        requiresAuth: true,
+        singleLayout: 'basic',
+        icon: 'fluent:Home48Regular',
+        order: 10
+      }
     }
   ],
   user: [
@@ -1120,6 +1144,18 @@ export const routeModel: Record<Auth.RoleType, AuthRoute.Route[]> = {
         singleLayout: 'basic',
         icon: 'fluent:book-information-24-regular',
         order: 8
+      }
+    },
+    {
+      name: 'demo',
+      path: '/demo',
+      component: 'self',
+      meta: {
+        title: 'demo',
+        requiresAuth: true,
+        singleLayout: 'basic',
+        icon: 'fluent:Home48Regular',
+        order: 10
       }
     }
   ]

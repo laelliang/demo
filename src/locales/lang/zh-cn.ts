@@ -77,7 +77,8 @@ const locale: LocaleMessages<I18nType.Schema> = {
         route: '路由管理',
         user: '用户管理'
       },
-      about: '关于'
+      about: '关于',
+      demo: 'Demo'
     }
   }
 };
