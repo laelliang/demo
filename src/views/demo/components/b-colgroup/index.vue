@@ -1,19 +1,21 @@
 <template>
   <slot name="header"></slot>
-  <slot></slot>
 </template>
+
 <script lang="ts">
 export default {
-  name: 'BColumn',
+  name: 'BColgroup',
   inheritAttrs: false,
   customOptions: {}
 };
 </script>
 <script setup lang="ts">
-import type { ColumnProps, ColumnDefaultSlots } from '../../type';
+import { defineSlots } from 'vue';
+import type { ColumnProps } from '../../type';
 
 defineProps<ColumnProps>();
-defineSlots<{ header(props: ColumnProps): any; default(data: ColumnDefaultSlots): any }>();
+
+defineSlots<{ header(props: ColumnProps): any }>();
 </script>
 
 <style scoped></style>

@@ -1,0 +1,13 @@
+.b-table{
+  border-collapse: collapse;
+  color: #606266;
+  thead tr {
+    background-color: #f8f8f9;
+  }
+  tr,th{
+    border: 1px solid #e8eaec;
+  }
+  th,td {
+    padding: 10px 20px;
+  }
+}

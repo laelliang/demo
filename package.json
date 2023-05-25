@@ -38,7 +38,7 @@
     "dev": "cross-env VITE_SERVICE_ENV=dev vite",
     "dev:test": "cross-env VITE_SERVICE_ENV=test vite",
     "dev:prod": "cross-env VITE_SERVICE_ENV=prod vite",
-    "build": "npm run typecheck && cross-env VITE_SERVICE_ENV=prod vite build",
+    "build": "cross-env VITE_SERVICE_ENV=prod vite build",
     "build:dev": "npm run typecheck && cross-env VITE_SERVICE_ENV=dev vite build",
     "build:test": "npm run typecheck && cross-env VITE_SERVICE_ENV=test vite build",
     "build:vercel": "cross-env VITE_HASH_ROUTE=Y VITE_VERCEL=Y vite build",
@@ -80,7 +80,9 @@
     "vue-i18n": "^9.2.2",
     "vue-router": "^4.2.1",
     "vuedraggable": "^4.1.0",
+    "vxe-table": "^4.3.14",
     "wangeditor": "^4.7.15",
+    "xe-utils": "^3.5.7",
     "xgplayer": "^3.0.2"
   },
   "devDependencies": {

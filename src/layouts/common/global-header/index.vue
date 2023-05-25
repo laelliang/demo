@@ -8,7 +8,7 @@
     <header-menu v-else />
     <div class="flex justify-end h-full">
       <global-search />
-      <github-site />
+      <!-- <github-site /> -->
       <full-screen />
       <theme-mode />
       <toggle-lang />
@@ -26,7 +26,7 @@ import GlobalLogo from '../global-logo/index.vue';
 import GlobalSearch from '../global-search/index.vue';
 import {
   FullScreen,
-  GithubSite,
+  // GithubSite,
   GlobalBreadcrumb,
   HeaderMenu,
   MenuCollapse,

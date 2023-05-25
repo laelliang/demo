@@ -26,7 +26,6 @@ const route = useRoute();
 
 subscribeStore();
 useGlobalEvents();
-
 watch(
   () => locale.value,
   () => {

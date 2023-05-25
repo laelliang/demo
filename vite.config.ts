@@ -1,4 +1,5 @@
 import { defineConfig, loadEnv } from 'vite';
+import vueJsx from '@vitejs/plugin-vue-jsx';
 import { createViteProxy, getRootPath, getSrcPath, setupVitePlugins, viteDefine } from './build';
 import { getServiceEnvConfig } from './.env-config';
 
@@ -21,7 +22,7 @@ export default defineConfig(configEnv => {
       }
     },
     define: viteDefine,
-    plugins: setupVitePlugins(viteEnv),
+    plugins: [setupVitePlugins(viteEnv), vueJsx({})],
     css: {
       preprocessorOptions: {
         scss: {

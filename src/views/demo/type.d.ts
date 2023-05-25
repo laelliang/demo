@@ -4,7 +4,13 @@ export interface TableData {
 }
 
 export interface ColumnProps {
-  title: string;
-  field: string;
+  title?: string;
+  field?: string;
+  type?: string;
   [key: string]: any;
+}
+
+export interface ColumnDefaultSlots {
+  data?: any;
+  field?: string;
 }

@@ -1,4 +1,8 @@
 {
+  "vueCompilerOptions": {
+    "target": 3,
+    "plugins": ["@vue-macros/volar/define-slots"]
+  },
   "compilerOptions": {
     "baseUrl": ".",
     "module": "ESNext",
@@ -8,6 +12,8 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "jsx": "preserve",
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment",
     "moduleResolution": "node",
     "isolatedModules": true,
     "resolveJsonModule": true,
