@@ -115,13 +115,86 @@ export const useRouteStore = defineStore('route-store', {
       if (!userId) {
         throw new Error('userId 不能为空!');
       }
+      const res = await fetchUserRoutes();
+      interface Route {
+        home: AuthRoute.AllRouteKey;
+        routes: any[];
+      }
 
-      const { error, data } = await fetchUserRoutes(userId);
+      const data: Route = {
+        home: '',
+        routes: [
+          // {
+          //   name: 'demo',
+          //   path: '/demo',
+          //   component: 'self',
+          //   meta: {
+          //     title: 'demo',
+          //     requiresAuth: true,
+          //     singleLayout: 'basic',
+          //     icon: 'fluent:home-24-regular',
+          //     order: 100
+          //   }
+          // }
+        ]
+      };
+      const processData = (routeData: any[], routes: any[], pathStr = '') => {
+        if (!Array.isArray(routeData)) {
+          return;
+        }
 
-      if (!error) {
+        routeData.forEach(val => {
+          const {
+            name,
+            path,
+            component,
+            children,
+            title,
+            icon,
+            requiresAuth,
+            order,
+            keepAlive,
+            hide,
+            multiTab,
+            activeMenu
+          } = val;
+          const route = {
+            name,
+            path,
+            component,
+            meta: {
+              title,
+              icon,
+              order,
+              requiresAuth,
+              keepAlive,
+              multiTab,
+              activeMenu,
+              hide
+            },
+            children: []
+          };
+          routes.push(route as never);
+          processData(children, route.children, `${pathStr}/${name}`);
+        });
+      };
+      const routeData = (res.data || []) as any[];
+      processData(routeData, data?.routes as any[]);
+      if (!res.error) {
+        const routes = sortRoutes(data.routes);
+        const traversal = (arr: AuthRoute.Route[]) => {
+          const children = arr[0].children;
+          if (children && children?.length > 0) {
+            traversal(children);
+          } else {
+            data.home = arr[0].path.substring(1) as AuthRoute.AllRouteKey;
+          }
+        };
+        traversal(routes);
         this.routeHomeName = data.home;
         this.handleUpdateRootRedirect(data.home);
-        this.handleAuthRoute(sortRoutes(data.routes));
+
+        this.handleAuthRoute(routes);
 
         initHomeTab(data.home, router);
 

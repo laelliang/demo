@@ -49,7 +49,8 @@ export default class CustomAxiosInstance {
           const contentType = handleConfig.headers['Content-Type'] as UnionKey.ContentType;
           handleConfig.data = await transformRequestData(handleConfig.data, contentType);
           // 设置token
-          handleConfig.headers.Authorization = localStg.get('token') || '';
+          // handleConfig.headers.Authorization = localStg.get('token') || '';
+          handleConfig.headers.Token = localStg.get('token') || '';
         }
         return handleConfig;
       },
@@ -81,6 +82,7 @@ export default class CustomAxiosInstance {
           return handleServiceResult(error, null);
         }
         const error = handleResponseError(response);
+
         return handleServiceResult(error, null);
       }) as (response: AxiosResponse<any, any>) => Promise<AxiosResponse<any, any>>,
       (axiosError: AxiosError) => {

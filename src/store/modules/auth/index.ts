@@ -17,6 +17,16 @@ interface AuthState {
   loginLoading: boolean;
 }
 
+interface UserInfoData {
+  permissions?: string[];
+  roles?: string[];
+  user?: {
+    userName: string;
+    userId: string;
+    [key: string]: any;
+  };
+}
+
 export const useAuthStore = defineStore('auth-store', {
   state: (): AuthState => ({
     userInfo: getUserInfo(),
@@ -80,6 +90,7 @@ export const useAuthStore = defineStore('auth-store', {
       // 不成功则重置状态
       this.resetAuthStore();
     },
+
     /**
      * 根据token进行登录
      * @param backendToken - 返回的token
@@ -93,7 +104,15 @@ export const useAuthStore = defineStore('auth-store', {
       localStg.set('refreshToken', refreshToken);
 
       // 获取用户信息
-      const { data } = await fetchUserInfo();
+      // const { data } = await fetchUserInfo();
+      const res = await fetchUserInfo();
+      const userInfoData = (res.data || {}) as UserInfoData;
+      const data = {
+        userId: userInfoData.user?.userId,
+        userName: userInfoData.user?.userName,
+        userRole: userInfoData.roles![0]
+      } as Auth.UserInfo;
+
       if (data) {
         // 成功后把用户信息存储到缓存中
         localStg.set('userInfo', data);
@@ -116,6 +135,7 @@ export const useAuthStore = defineStore('auth-store', {
       this.loginLoading = true;
       const { data } = await fetchLogin(userName, password);
       if (data) {
+        data.refreshToken = 'xxxxxxxxxxxxxxxxxxxxxxxxx';
         await this.handleActionAfterLogin(data);
       }
       this.loginLoading = false;

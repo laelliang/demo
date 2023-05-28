@@ -28,10 +28,15 @@ export function getLayoutComponent(layoutType: UnionKey.LayoutComponentType) {
  * @param routeKey - 路由key
  */
 export function getViewComponent(routeKey: AuthRoute.LastDegreeRouteKey) {
+  // if (!views[routeKey]) {
+  //   throw new Error(`路由“${routeKey}”没有对应的组件文件！`);
+  // }
+  // return setViewComponentName(views[routeKey], routeKey);
+  let key = routeKey;
   if (!views[routeKey]) {
-    throw new Error(`路由“${routeKey}”没有对应的组件文件！`);
+    key = '404' as PageRoute.LastDegreeRouteKey;
   }
-  return setViewComponentName(views[routeKey], routeKey);
+  return setViewComponentName(views[key], key);
 }
 
 /** 给页面组件设置名称 */

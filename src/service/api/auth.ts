@@ -1,4 +1,4 @@
-import { mockRequest } from '../request';
+import { mockRequest, request } from '../request';
 
 /**
  * 获取验证码
@@ -15,12 +15,14 @@ export function fetchSmsCode(phone: string) {
  * @param password - 密码
  */
 export function fetchLogin(userName: string, password: string) {
-  return mockRequest.post<ApiAuth.Token>('/login', { userName, password });
+  return request.post<ApiAuth.Token>('http://8.142.18.94:10000/api/system/login', { userName, password });
+  // return mockRequest.post<ApiAuth.Token>('/login', { userName, password });
 }
 
 /** 获取用户信息 */
 export function fetchUserInfo() {
-  return mockRequest.get<ApiAuth.UserInfo>('/getUserInfo');
+  return request.get<ApiAuth.UserInfo>('http://8.142.18.94:10000/api/system/getInfo');
+  // return mockRequest.get<ApiAuth.UserInfo>('/getUserInfo');
 }
 
 /**
@@ -28,8 +30,15 @@ export function fetchUserInfo() {
  * @param userId - 用户id
  * @description 后端根据用户id查询到对应的角色类型，并将路由筛选出对应角色的路由数据返回前端
  */
-export function fetchUserRoutes(userId: string) {
-  return mockRequest.post<ApiRoute.Route>('/getUserRoutes', { userId });
+export function fetchUserRoutes() {
+  // request.get('http://8.142.18.94:10000/api/system/menu/route').then(res => {
+  //   console.log(res);
+  // });
+  // axios.get('http://8.142.18.94:10000/api/system/menu/route').then(res => {
+  //   console.log(res);
+  // });
+  return request.get<ApiRoute.Route>('http://8.142.18.94:10000/api/system/menu/route');
+  // return mockRequest.post<ApiRoute.Route>('/getUserRoutes', { userId });
 }
 
 /**

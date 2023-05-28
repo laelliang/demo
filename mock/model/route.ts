@@ -517,7 +517,7 @@ export const routeModel: Record<Auth.RoleType, AuthRoute.Route[]> = {
         title: 'demo',
         requiresAuth: true,
         singleLayout: 'basic',
-        icon: 'fluent:Home48Regular',
+        icon: 'fluent:home-24-regular',
         order: 10
       }
     }
@@ -1030,7 +1030,7 @@ export const routeModel: Record<Auth.RoleType, AuthRoute.Route[]> = {
         title: 'demo',
         requiresAuth: true,
         singleLayout: 'basic',
-        icon: 'fluent:Home48Regular',
+        icon: 'fluent:home-24-regular',
         order: 10
       }
     }
@@ -1154,7 +1154,7 @@ export const routeModel: Record<Auth.RoleType, AuthRoute.Route[]> = {
         title: 'demo',
         requiresAuth: true,
         singleLayout: 'basic',
-        icon: 'fluent:Home48Regular',
+        icon: 'fluent:home-24-regular',
         order: 10
       }
     }

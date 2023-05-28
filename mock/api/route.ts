@@ -3,7 +3,7 @@ import { routeModel, userModel } from '../model';
 
 const apis: MockMethod[] = [
   {
-    url: '/mock/getUserRoutes',
+    url: '/mock/',
     method: 'post',
     response: (options: Service.MockOption): Service.MockServiceResult => {
       const { userId = undefined } = options.body;
